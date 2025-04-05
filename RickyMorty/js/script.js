@@ -10,6 +10,8 @@ const statusaliveboton = document.getElementById("statusalive");
 const statusdeadboton = document.getElementById("statusdead");
 const statusunknownboton = document.getElementById("statusunknown");
 const clearfilterboton = document.getElementById("clearfilter");
+const form = document.getElementById("searchForm");
+const searchInput = document.getElementById("searchInput");
 
 async function verificarDatosNull(pagina, estado = null) {
   try {
@@ -256,7 +258,48 @@ async function mostrarPersonaje(request = undefined, status = 0) {
 
 function main() {
   mostrarPersonaje();
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
 
+    const searchTerm = searchInput.value.trim();
+
+    if (searchTerm) {
+      async function buscarPersonajePorNombre(nombre) {
+        try {
+          const response = await fetch(
+            `https://rickandmortyapi.com/api/character/?name=${nombre}`
+          );
+          const data = await response.json();
+
+          if (data.results.length === 0) {
+            contenedor.innerHTML = `<div>No se encontro ningun personaje con el nombre "${nombre}".</div>`;
+            return;
+          }
+
+          const personaje = data.results[0];
+
+          contenedor.innerHTML = `
+            <div class="personaje-info">
+              <img src="${personaje.image}" alt="imagen de ${personaje.name}" class="personaje-imagen" />
+              <h2>${personaje.name}</h2>
+              <p><strong>Estado:</strong> ${personaje.status}</p>
+              <p><strong>Especie:</strong> ${personaje.species}</p>
+              <p><strong>Género:</strong> ${personaje.gender}</p>
+              <p><strong>Origen:</strong> ${personaje.origin.name}</p>
+              <p><strong>Ubicación:</strong> ${personaje.location.name}</p>
+            </div>
+          `;
+        } catch (error) {
+          console.error("Error al buscar el personaje:", error);
+          contenedor.innerHTML = `<div>Ocurrio un error al intentar buscar el personaje "${nombre}".</div>`;
+        }
+      }
+      await buscarPersonajePorNombre(searchTerm);
+    } else {
+      contenedor.innerHTML =
+        "<div>Por favor ingrese un termino de búsqueda.</div>";
+    }
+  });
   clearfilterboton.addEventListener("click", () => {
     estadoseleccionado = null;
     pagina = 1;

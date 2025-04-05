@@ -12,6 +12,7 @@ const statusunknownboton = document.getElementById("statusunknown");
 const clearfilterboton = document.getElementById("clearfilter");
 const form = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
+let terminoBusquedaActual = null;
 
 async function verificarDatosNull(pagina, estado = null) {
   try {
@@ -30,36 +31,32 @@ async function verificarDatosNull(pagina, estado = null) {
 
 async function obtenerPersonajes(a) {
   try {
+    eliminarResultados();
+    let url = `https://rickandmortyapi.com/api/character/?page=${pagina}`;
+    if (estadoseleccionado) url += `&status=${estadoseleccionado}`;
+    if (terminoBusquedaActual) url += `&name=${terminoBusquedaActual}`;
+
     let validacion = await verificarDatosNull(pagina, estadoseleccionado);
 
     if (a === "previo") {
       if (pagina > 1) {
         pagina--;
         validacion = await verificarDatosNull(pagina, estadoseleccionado);
-        if (!validacion) {
-          botonext.disabled = false;
-        }
+        botonext.disabled = !validacion;
       }
     }
 
-    if (a === "siguiente" && validacion === true) {
+    if (a === "siguiente") {
       pagina++;
       validacion = await verificarDatosNull(pagina, estadoseleccionado);
-      if (!validacion) {
-        botonext.disabled = true;
-      }
+      botonext.disabled = !validacion;
     }
 
-    if (pagina > 1) {
-      botonprev.disabled = false;
-    } else {
-      botonprev.disabled = true;
-    }
+    botonprev.disabled = pagina <= 1;
 
-    let url = `https://rickandmortyapi.com/api/character/?page=${pagina}`;
-    if (estadoseleccionado) {
-      url += `&status=${estadoseleccionado}`;
-    }
+    url = `https://rickandmortyapi.com/api/character/?page=${pagina}`;
+    if (estadoseleccionado) url += `&status=${estadoseleccionado}`;
+    if (terminoBusquedaActual) url += `&name=${terminoBusquedaActual}`;
 
     const response = await fetch(url);
     const data = await response.json();
@@ -260,9 +257,9 @@ function main() {
   mostrarPersonaje();
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
-
     const searchTerm = searchInput.value.trim();
-
+    terminoBusquedaActual = searchTerm;
+    pagina = 1;
     if (searchTerm) {
       async function buscarPersonajePorNombre(nombre) {
         try {
@@ -271,38 +268,44 @@ function main() {
           );
           const data = await response.json();
 
-          if (data.results.length === 0) {
-            contenedor.innerHTML = `<div>No se encontro ningun personaje con el nombre "${nombre}".</div>`;
+          if (!data.results || data.results.length === 0) {
+            contenedor.innerHTML = `<div>No se encontró ningún personaje con el nombre "${nombre}".</div>`;
             return;
           }
 
-          const personaje = data.results[0];
+          contenedor.innerHTML = "";
 
-          contenedor.innerHTML = `
-            <div class="personaje-info">
-              <img src="${personaje.image}" alt="imagen de ${personaje.name}" class="personaje-imagen" />
-              <h2>${personaje.name}</h2>
-              <p><strong>Estado:</strong> ${personaje.status}</p>
-              <p><strong>Especie:</strong> ${personaje.species}</p>
-              <p><strong>Género:</strong> ${personaje.gender}</p>
-              <p><strong>Origen:</strong> ${personaje.origin.name}</p>
-              <p><strong>Ubicación:</strong> ${personaje.location.name}</p>
-            </div>
-          `;
+          // Recorrer todos los personajes encontrados
+          data.results.forEach((personaje) => {
+            const personajeHTML = `
+              <div class="personaje-info">
+                <img src="${personaje.image}" alt="imagen de ${personaje.name}" class="personaje-imagen" />
+                <h2>${personaje.name}</h2>
+                <p><strong>Estado:</strong> ${personaje.status}</p>
+                <p><strong>Especie:</strong> ${personaje.species}</p>
+                <p><strong>Género:</strong> ${personaje.gender}</p>
+                <p><strong>Origen:</strong> ${personaje.origin.name}</p>
+                <p><strong>Ubicación:</strong> ${personaje.location.name}</p>
+              </div>
+            `;
+            contenedor.innerHTML += personajeHTML;
+          });
         } catch (error) {
           console.error("Error al buscar el personaje:", error);
-          contenedor.innerHTML = `<div>Ocurrio un error al intentar buscar el personaje "${nombre}".</div>`;
+          contenedor.innerHTML = `<div>Ocurrió un error al intentar buscar el personaje "${nombre}".</div>`;
         }
       }
+
       await buscarPersonajePorNombre(searchTerm);
     } else {
       contenedor.innerHTML =
-        "<div>Por favor ingrese un termino de búsqueda.</div>";
+        "<div>Por favor ingrese un término de búsqueda.</div>";
     }
   });
   clearfilterboton.addEventListener("click", () => {
     estadoseleccionado = null;
     pagina = 1;
+    terminoBusquedaActual = null;
     eliminarResultados();
     mostrarPersonaje();
   });

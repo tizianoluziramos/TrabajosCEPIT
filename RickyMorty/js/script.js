@@ -176,6 +176,8 @@ function eliminarResultados() {
   listItems.forEach((li) => {
     li.remove();
   });
+  const personajes = document.querySelectorAll(".personaje-info");
+  personajes.forEach((div) => div.remove());
 }
 
 async function mostrarPersonaje(request = undefined, status = 0) {
@@ -267,7 +269,6 @@ function main() {
             `https://rickandmortyapi.com/api/character/?name=${nombre}`
           );
           const data = await response.json();
-
           if (!data.results || data.results.length === 0) {
             contenedor.innerHTML = `<div>No se encontró ningún personaje con el nombre "${nombre}".</div>`;
             return;
@@ -275,7 +276,6 @@ function main() {
 
           contenedor.innerHTML = "";
 
-          // Recorrer todos los personajes encontrados
           data.results.forEach((personaje) => {
             const personajeHTML = `
               <div class="personaje-info">
@@ -302,10 +302,14 @@ function main() {
         "<div>Por favor ingrese un término de búsqueda.</div>";
     }
   });
+
   clearfilterboton.addEventListener("click", () => {
     estadoseleccionado = null;
     pagina = 1;
+    botonext.disabled = false;
+    botonprev.disabled = true;
     terminoBusquedaActual = null;
+    searchInput.value = "";
     eliminarResultados();
     mostrarPersonaje();
   });

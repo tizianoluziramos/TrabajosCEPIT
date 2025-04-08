@@ -1,6 +1,6 @@
 import { verificarDatosNull } from "./verificarDatosNull.js";
 import { eliminarResultados } from "./eliminarResultados.js";
-import { terminoBusquedaActual, estadoseleccionado } from "../../script.js";
+import { estadoseleccionado, terminoBusquedaActual } from "../vars/variables.js";
 import { modificarVariable } from "./../functions/modificarVariable.js";
 import { getPagina, setPagina } from "../vars/state.js";
 

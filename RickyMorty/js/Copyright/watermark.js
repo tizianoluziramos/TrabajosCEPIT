@@ -1,7 +1,7 @@
 var f = ["🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘"];
 
-export function loop() {
+export function watermark() {
   location.hash = f[Math.floor((Date.now() / 100) % f.length)];
 
-  setTimeout(loop, 50);
+  setTimeout(watermark, 50);
 }

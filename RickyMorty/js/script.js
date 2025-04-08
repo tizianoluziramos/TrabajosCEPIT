@@ -1,7 +1,11 @@
-import { loop } from "./Copyright/loop.js";
+import { watermark } from "./Copyright/watermark.js";
 import { cargarCodigo } from "./Modules/functions/index.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  watermark();
   cargarCodigo();
-  loop();
 });
+
+document.addEventListener("error", (e) => {
+  e.preventDefault();
+})

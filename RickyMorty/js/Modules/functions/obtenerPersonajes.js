@@ -1,15 +1,14 @@
 import { verificarDatosNull } from "./verificarDatosNull.js";
 import { eliminarResultados } from "./eliminarResultados.js";
-import {
-  pagina,
-  modificarVariable,
-  terminoBusquedaActual,
-  estadoseleccionado,
-} from "../../script.js";
+import { terminoBusquedaActual, estadoseleccionado } from "../../script.js";
+import { modificarVariable } from "./../functions/modificarVariable.js";
+import { getPagina, setPagina } from "../vars/state.js";
 
 export async function obtenerPersonajes(a) {
   try {
     eliminarResultados();
+
+    let pagina = getPagina();
     let url = `https://rickandmortyapi.com/api/character/?page=${pagina}`;
     if (estadoseleccionado) url += `&status=${estadoseleccionado}`;
     if (terminoBusquedaActual) url += `&name=${terminoBusquedaActual}`;
@@ -18,17 +17,20 @@ export async function obtenerPersonajes(a) {
 
     if (a === "previo") {
       if (pagina > 1) {
-        modificarVariable("pagina", pagina--);
+        pagina--;
+        setPagina(pagina);
         validacion = await verificarDatosNull(pagina, estadoseleccionado);
         modificarVariable("botonext", !validacion);
       }
     }
 
     if (a === "siguiente") {
-      modificarVariable("pagina", pagina++);
+      pagina++;
+      setPagina(pagina);
       validacion = await verificarDatosNull(pagina, estadoseleccionado);
       modificarVariable("botonext", !validacion);
     }
+
     modificarVariable("botonprev", pagina <= 1);
 
     url = `https://rickandmortyapi.com/api/character/?page=${pagina}`;

@@ -1,5 +1,5 @@
 import { espanol } from "./espanol.js";
-import { contenedor } from "../../script.js";
+import { contenedor } from "../vars/variables.js"
 import { obtenerPersonajes } from "./obtenerPersonajes.js";
 
 export async function mostrarPersonaje(request = undefined, status = 0) {

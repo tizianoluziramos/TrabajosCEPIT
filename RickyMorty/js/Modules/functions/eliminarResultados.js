@@ -1,4 +1,4 @@
-import { contenedor } from "../../script.js";
+import { contenedor } from "../vars/variables.js"
 
 export function eliminarResultados() {
   const listItems = contenedor.querySelectorAll("li");

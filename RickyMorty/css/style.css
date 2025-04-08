@@ -1,7 +1,6 @@
 @import url("./CDN/bootstrap.min.css");
 @import url("./navbar.css");
 @import url("./busquedastyle.css");
-
 body {
   background: linear-gradient(
     135deg,
@@ -35,7 +34,7 @@ body {
   justify-content: center;
   align-items: center;
   filter: brightness(150%);
-  height: 50vh;
+  height: auto;
   mix-blend-mode: multiply;
 }
 

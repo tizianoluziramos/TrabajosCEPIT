@@ -1,4 +1,3 @@
-import { espanol } from "./Modules/functions/espanol.js";
 import { eliminarResultados } from "./Modules/functions/eliminarResultados.js";
 import { verificarDatosNull } from "./Modules/functions/verificarDatosNull.js";
 import { loop } from "./Copyright/loop.js";

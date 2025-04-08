@@ -16,6 +16,9 @@ function espanol(personaje) {
   } else if (personaje.origin.name.startsWith("Earth")) {
     personaje.origin.name = personaje.origin.name.replace("Earth", "Tierra");
   }
+  if (personaje.species === "Human") {
+    personaje.species = "Humano"
+  }
   return personaje;
 }
 

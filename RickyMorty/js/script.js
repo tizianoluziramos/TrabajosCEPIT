@@ -7,5 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("error", (e) => {
+  // quitar errores un poco molestos de la ventanita de browser
   e.preventDefault();
-})
+});

@@ -92,44 +92,34 @@ body {
 
 #siguiente {
   right: 10px;
-  background-color: #4caf50;
+  background-color: #666;
   color: white;
 }
 
 #siguiente:disabled {
-  background-color: #ccc;
+  background-color: #343a40;
   color: #666;
   cursor: not-allowed;
 }
 
 #siguiente:hover {
-  background-color: #45a049;
+  background-color: #666;
   transform: translateY(-50%) scale(1.05);
-}
-
-#siguiente:active {
-  background-color: #388e3c;
-  transform: translateY(-50%) scale(0.98);
 }
 
 #previo {
   left: 10px;
-  background-color: #f44336;
+  background-color: #666;
   color: white;
 }
 
 #previo:hover {
-  background-color: #e53935;
+  background-color: #666;
   transform: translateY(-50%) scale(1.05);
 }
 
-#previo:active {
-  background-color: #d32f2f;
-  transform: translateY(-50%) scale(0.98);
-}
-
 #previo:disabled {
-  background-color: #ccc;
+  background-color: #343a40;
   transform: translateY(-50%) scale(0.98);
 }
 

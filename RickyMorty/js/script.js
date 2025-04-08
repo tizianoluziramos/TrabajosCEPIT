@@ -1,53 +1,13 @@
 import { eliminarResultados } from "./Modules/functions/eliminarResultados.js";
-import { verificarDatosNull } from "./Modules/functions/verificarDatosNull.js";
 import { loop } from "./Copyright/loop.js";
 import { mostrarDetallePersonaje } from "./Modules/functions/mostrarDetallePersonaje.js";
 import { buscarPersonajePorNombre } from "./Modules/functions/buscarPersonajePorNombre.js";
-import { mostrarPersonaje } from "./Modules/functions/mostrarPersonaje.js";
-
+import { obtenerPersonajes } from "./Modules/functions/obtenerPersonajes.js";
 export const contenedor = document.getElementById("results-container");
 export let terminoBusquedaActual = null;
-
-export async function obtenerPersonajes(a) {
-  try {
-    eliminarResultados();
-    let url = `https://rickandmortyapi.com/api/character/?page=${pagina}`;
-    if (estadoseleccionado) url += `&status=${estadoseleccionado}`;
-    if (terminoBusquedaActual) url += `&name=${terminoBusquedaActual}`;
-
-    let validacion = await verificarDatosNull(pagina, estadoseleccionado);
-
-    if (a === "previo") {
-      if (pagina > 1) {
-        pagina--;
-        validacion = await verificarDatosNull(pagina, estadoseleccionado);
-        botonext.disabled = !validacion;
-      }
-    }
-
-    if (a === "siguiente") {
-      pagina++;
-      validacion = await verificarDatosNull(pagina, estadoseleccionado);
-      botonext.disabled = !validacion;
-    }
-
-    botonprev.disabled = pagina <= 1;
-
-    url = `https://rickandmortyapi.com/api/character/?page=${pagina}`;
-    if (estadoseleccionado) url += `&status=${estadoseleccionado}`;
-    if (terminoBusquedaActual) url += `&name=${terminoBusquedaActual}`;
-
-    const response = await fetch(url);
-    const data = await response.json();
-    return data.results;
-  } catch (error) {
-    console.error("Error al obtener los personajes:", error);
-  }
-}
-
-window.obtenerPersonajes = obtenerPersonajes;
-let pagina = 1;
-let estadoseleccionado = null;
+import { mostrarPersonaje } from './Modules/functions/mostrarPersonaje.js'
+export let pagina = 1;
+export let estadoseleccionado = null;
 let botonext = document.getElementById("siguiente");
 let botonprev = document.getElementById("previo");
 botonprev.disabled = true;
@@ -59,6 +19,19 @@ const form = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
 
 window.mostrarDetallePersonaje = mostrarDetallePersonaje;
+
+export function modificarVariable(nombre, data) {
+  if (nombre === "pagina") {
+    pagina = data;
+  }
+  if (nombre === "botonext") {
+    botonext.disabled = data;
+  }
+  if (nombre === "botonprev") {
+    botonprev.disabled = data;
+  }
+}
+window.obtenerPersonajes = obtenerPersonajes;
 
 function main() {
   mostrarPersonaje();

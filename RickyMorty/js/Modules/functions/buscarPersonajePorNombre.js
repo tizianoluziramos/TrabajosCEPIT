@@ -15,7 +15,7 @@ export async function buscarPersonajePorNombre(nombre) {
 
     data.results.forEach((personaje) => {
       const personajeHTML = `
-              <div class="personaje-info">
+              <div class="personaje-info" onclick="mostrarDetallePersonaje(${personaje.id})">
                 <img src="${personaje.image}" alt="imagen de ${personaje.name}" class="personaje-imagen" />
                 <h2>${personaje.name}</h2>
                 <p><strong>Estado:</strong> ${personaje.status}</p>

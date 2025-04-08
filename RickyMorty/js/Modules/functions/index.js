@@ -18,10 +18,11 @@ import {
   setEstadoSeleccionado,
 } from "../vars/variables.js"
 
-window.mostrarDetallePersonaje = mostrarDetallePersonaje;
-window.obtenerPersonajes = obtenerPersonajes;
-
 export function cargarCodigo() {
+  if (window.mostrarDetallePersonaje !== mostrarDetallePersonaje || window.obtenerPersonajes !== obtenerPersonajes) {
+    window.mostrarDetallePersonaje = mostrarDetallePersonaje;
+    window.obtenerPersonajes = obtenerPersonajes;
+  }
   mostrarPersonaje();
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
@@ -31,8 +32,7 @@ export function cargarCodigo() {
     if (searchTerm) {
       await buscarPersonajePorNombre(searchTerm);
     } else {
-      contenedor.innerHTML =
-        "<div>Por favor ingrese un término de búsqueda.</div>";
+      alert("Por favor ingrese un termino de busqueda");
     }
   });
 

@@ -7,7 +7,7 @@ export async function buscarPersonajePorNombre(nombre) {
     );
     const data = await response.json();
     if (!data.results || data.results.length === 0) {
-      contenedor.innerHTML = `<div>No se encontró ningún personaje con el nombre "${nombre}".</div>`;
+      alert(`No se encontró ningún personaje con el nombre "${nombre}".`);
       return;
     }
 
@@ -29,6 +29,6 @@ export async function buscarPersonajePorNombre(nombre) {
     });
   } catch (error) {
     console.error("Error al buscar el personaje:", error);
-    contenedor.innerHTML = `<div>Ocurrió un error al intentar buscar el personaje "${nombre}".</div>`;
+    alert(`Ocurrió un error al intentar buscar el personaje "${nombre}".`);
   }
 }

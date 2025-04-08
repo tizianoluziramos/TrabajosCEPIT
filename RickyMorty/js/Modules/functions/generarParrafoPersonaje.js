@@ -1,4 +1,7 @@
+import { espanol } from "./espanol.js";
+
 function generarParrafoPersonaje(personaje) {
+  personaje = espanol(personaje);
   return `
       <p><strong>Nombre:</strong> ${personaje.name}</p>
       <p><strong>Estado:</strong> ${personaje.status}</p>

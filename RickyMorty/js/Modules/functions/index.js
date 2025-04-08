@@ -5,7 +5,6 @@ import { obtenerPersonajes } from "./obtenerPersonajes.js"
 import { mostrarPersonaje } from "./mostrarPersonaje.js"
 import { setPagina } from "../vars/state.js"
 import {
-  contenedor,
   statusaliveboton,
   statusdeadboton,
   statusunknownboton,

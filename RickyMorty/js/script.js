@@ -3,14 +3,15 @@ import { loop } from "./Copyright/loop.js";
 import { mostrarDetallePersonaje } from "./Modules/functions/mostrarDetallePersonaje.js";
 import { buscarPersonajePorNombre } from "./Modules/functions/buscarPersonajePorNombre.js";
 import { obtenerPersonajes } from "./Modules/functions/obtenerPersonajes.js";
-export const contenedor = document.getElementById("results-container");
-export let terminoBusquedaActual = null;
 import { mostrarPersonaje } from './Modules/functions/mostrarPersonaje.js'
+
 export let pagina = 1;
 export let estadoseleccionado = null;
+export const contenedor = document.getElementById("results-container");
+export let terminoBusquedaActual = null;
+
 let botonext = document.getElementById("siguiente");
-let botonprev = document.getElementById("previo");
-botonprev.disabled = true;
+let botonprev = document.getElementById("previo").disabled = true;
 const statusaliveboton = document.getElementById("statusalive");
 const statusdeadboton = document.getElementById("statusdead");
 const statusunknownboton = document.getElementById("statusunknown");
@@ -31,6 +32,7 @@ export function modificarVariable(nombre, data) {
     botonprev.disabled = data;
   }
 }
+
 window.obtenerPersonajes = obtenerPersonajes;
 
 function main() {

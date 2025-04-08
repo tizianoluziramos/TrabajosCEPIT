@@ -11,7 +11,8 @@ export const contenedor = document.getElementById("results-container");
 export let terminoBusquedaActual = null;
 
 let botonext = document.getElementById("siguiente");
-let botonprev = document.getElementById("previo").disabled = true;
+let botonprev = document.getElementById("previo");
+botonprev.disabled = true;
 const statusaliveboton = document.getElementById("statusalive");
 const statusdeadboton = document.getElementById("statusdead");
 const statusunknownboton = document.getElementById("statusunknown");

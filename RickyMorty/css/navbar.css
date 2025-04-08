@@ -1,4 +1,4 @@
-@import url('./poppinsfont.css');
+@import url("./CDN/poppinsfont.css");
 
 .navbar {
   background-color: #343a40 !important;

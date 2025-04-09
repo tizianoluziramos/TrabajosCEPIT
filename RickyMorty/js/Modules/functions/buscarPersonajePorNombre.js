@@ -15,14 +15,10 @@ export async function buscarPersonajePorNombre(nombre) {
 
     data.results.forEach((personaje) => {
       const personajeHTML = `
-              <div class="personaje-info" onclick="mostrarDetallePersonaje(${personaje.id})">
-                <img src="${personaje.image}" alt="imagen de ${personaje.name}" class="personaje-imagen" />
-                <h2>${personaje.name}</h2>
-                <p><strong>Estado:</strong> ${personaje.status}</p>
-                <p><strong>Especie:</strong> ${personaje.species}</p>
-                <p><strong>Género:</strong> ${personaje.gender}</p>
-                <p><strong>Origen:</strong> ${personaje.origin.name}</p>
-                <p><strong>Ubicación:</strong> ${personaje.location.name}</p>
+              <div class="result" onclick="mostrarDetallePersonaje(${personaje.id})">
+                <img src="${personaje.image}" alt="Imagen de ${personaje.name}">
+                <p>Nombre: ${personaje.name}</p>
+                <p>Estado: ${personaje.status}</p>
               </div>
             `;
       contenedor.innerHTML += personajeHTML;

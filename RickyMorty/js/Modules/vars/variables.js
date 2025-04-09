@@ -17,6 +17,7 @@ export let terminoBusquedaActual = null;
 export function getEstadoSeleccionado() {
   return estadoseleccionado;
 }
+
 export function setEstadoSeleccionado(valor) {
   estadoseleccionado = valor;
 }

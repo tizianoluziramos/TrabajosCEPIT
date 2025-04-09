@@ -41,6 +41,6 @@ export async function obtenerPersonajes(a) {
     const data = await response.json();
     return data.results;
   } catch (error) {
-    console.error("Error al obtener los personajes:", error);
+    console.error(error.message);
   }
 }

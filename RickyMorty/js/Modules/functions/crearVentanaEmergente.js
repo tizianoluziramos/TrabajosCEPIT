@@ -21,7 +21,7 @@ export function crearVentanaEmergente(personaje) {
   ventana.style.zIndex = "1000";
   ventana.style.maxWidth = "400px";
   ventana.style.width = "80%";
-
+  
   const cerrar = document.createElement("span");
   cerrar.innerHTML = "X";
   cerrar.style.position = "absolute";

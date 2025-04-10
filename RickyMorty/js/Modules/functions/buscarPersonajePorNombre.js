@@ -27,7 +27,7 @@ export async function buscarPersonajePorNombre(nombre) {
       contenedor.appendChild(li);
     });
   } catch (error) {
-    console.error("Error al buscar el personaje:", error);
+    console.error(error);
     alert(`Ocurrió un error al intentar buscar el personaje "${nombre}".`);
   }
 }

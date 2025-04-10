@@ -57,14 +57,14 @@ export function cargarCodigo() {
     setEstadoSeleccionado("Unknown");
     setPagina(1);
     eliminarResultados();
-    mostrarPersonaje("", 3);
+    mostrarPersonaje("", "Unknown");
   });
 
   statusdeadboton.addEventListener("click", () => {
     setEstadoSeleccionado("Dead");
     setPagina(1);
     eliminarResultados();
-    mostrarPersonaje("", 2);
+    mostrarPersonaje("", "Dead");
   });
 
   botonext.addEventListener("click", () => {

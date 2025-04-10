@@ -1,4 +1,4 @@
-import { setPagina } from "../vars/state.js"
+import { setPagina } from "./state.js"
 
 export function modificarVariable(nombre, data) {
   if (nombre === "pagina") {

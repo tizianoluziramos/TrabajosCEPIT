@@ -1,4 +1,4 @@
-import { espanol } from "./espanol.js";
+import { espanol } from "./generartexto/espanol.js";
 import { contenedor } from "../vars/variables.js"
 import { obtenerPersonajes } from "./obtenerPersonajes.js";
 

@@ -1,4 +1,4 @@
-import { espanol } from "./generartexto/espanol.js";
+import { espanol } from "./espanol.js";
 
 function generarParrafoPersonaje(personaje) {
   personaje = espanol(personaje);

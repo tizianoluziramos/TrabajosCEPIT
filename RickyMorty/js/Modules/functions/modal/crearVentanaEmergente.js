@@ -1,4 +1,4 @@
-import { generarParrafoPersonaje } from "../generarParrafoPersonaje.js";
+import { generarParrafoPersonaje } from "../generartexto/generarParrafoPersonaje.js";
 import { cerrarVentana } from "./cerrarVentana.js";
 
 export function crearVentanaEmergente(personaje) {

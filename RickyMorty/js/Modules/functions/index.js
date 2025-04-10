@@ -1,5 +1,5 @@
 import { eliminarResultados } from "./eliminarResultados.js"
-import { mostrarDetallePersonaje } from "./mostrarDetallePersonaje.js"
+import { mostrarDetallePersonaje } from "./modal/mostrarDetallePersonaje.js"
 import { buscarPersonajePorNombre } from "./buscarPersonajePorNombre.js"
 import { obtenerPersonajes } from "./obtenerPersonajes.js"
 import { mostrarPersonaje } from "./mostrarPersonaje.js"
@@ -50,7 +50,7 @@ export function cargarCodigo() {
     setEstadoSeleccionado("Alive");
     setPagina(1);
     eliminarResultados();
-    mostrarPersonaje("", 1);
+    mostrarPersonaje("", "Alive");
   });
 
   statusunknownboton.addEventListener("click", () => {

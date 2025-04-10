@@ -1,4 +1,4 @@
-import { espanol } from "./espanol.js";
+import { espanol } from "../espanol.js";
 
 export async function obtenerDetallePersonaje(id) {
   try {

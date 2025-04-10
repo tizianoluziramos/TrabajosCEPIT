@@ -1,4 +1,4 @@
-import { espanol } from "./espanol.js";
+import { espanol } from "./generartexto/espanol.js"
 const contenedor = document.getElementById("results-container");
 
 export async function buscarPersonajePorNombre(nombre) {

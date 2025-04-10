@@ -1,5 +1,5 @@
 import { espanol } from "./generartexto/espanol.js"
-const contenedor = document.getElementById("results-container");
+import { contenedor } from '../vars/variables.js'
 
 export async function buscarPersonajePorNombre(nombre) {
   try {

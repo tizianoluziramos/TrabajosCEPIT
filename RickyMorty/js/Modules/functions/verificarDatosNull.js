@@ -1,4 +1,4 @@
-async function verificarDatosNull(pagina, estado = null) {
+export async function verificarDatosNull(pagina, estado = null) {
   try {
     let url = `https://rickandmortyapi.com/api/character/?page=${pagina}`;
     if (estado) {
@@ -12,5 +12,3 @@ async function verificarDatosNull(pagina, estado = null) {
     return false;
   }
 }
-
-export { verificarDatosNull }

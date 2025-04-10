@@ -1,3 +1,4 @@
+import { espanol } from "./espanol.js";
 const contenedor = document.getElementById("results-container");
 
 export async function buscarPersonajePorNombre(nombre) {
@@ -14,14 +15,16 @@ export async function buscarPersonajePorNombre(nombre) {
     contenedor.innerHTML = "";
 
     data.results.forEach((personaje) => {
-      const personajeHTML = `
-              <div class="result" onclick="mostrarDetallePersonaje(${personaje.id})">
-                <img src="${personaje.image}" alt="Imagen de ${personaje.name}">
-                <p>Nombre: ${personaje.name}</p>
-                <p>Estado: ${personaje.status}</p>
-              </div>
-            `;
-      contenedor.innerHTML += personajeHTML;
+      const li = document.createElement("li");
+      espanol(personaje);
+      li.innerHTML = `
+          <div class="result" onclick="mostrarDetallePersonaje(${personaje.id})">
+            <img src="${personaje.image}" alt="Imagen de ${personaje.name}">
+            <p>Nombre: ${personaje.name}</p>
+            <p>Estado: ${personaje.status}</p>
+          </div>
+        `;
+      contenedor.appendChild(li);
     });
   } catch (error) {
     console.error("Error al buscar el personaje:", error);

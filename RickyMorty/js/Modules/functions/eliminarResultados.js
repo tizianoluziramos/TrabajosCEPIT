@@ -5,6 +5,4 @@ export function eliminarResultados() {
   listItems.forEach((li) => {
     li.remove();
   });
-  const personajes = document.querySelectorAll(".personaje-info");
-  personajes.forEach((div) => div.remove());
 }

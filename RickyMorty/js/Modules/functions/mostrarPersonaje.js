@@ -57,7 +57,7 @@ export async function mostrarPersonaje(request = undefined, status = 0) {
       }
     });
   }
-  if (status === 1) {
+  if (status === "Alive") {
     obtenerPersonajes(request, 1).then((personajes) => {
       if (personajes) {
         personajes.forEach((personaje) => {

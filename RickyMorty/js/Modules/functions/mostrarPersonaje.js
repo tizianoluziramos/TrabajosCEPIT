@@ -3,7 +3,7 @@ import { contenedor } from "../vars/variables.js"
 import { obtenerPersonajes } from "./obtenerPersonajes.js";
 
 export async function mostrarPersonaje(request = undefined, status = 0) {
-  if (status === 3) {
+  if (status === "Unknown") {
     obtenerPersonajes(request, 3).then((personajes) => {
       if (personajes) {
         personajes.forEach((personaje) => {
@@ -21,7 +21,7 @@ export async function mostrarPersonaje(request = undefined, status = 0) {
       }
     });
   }
-  if (status === 2) {
+  if (status === "Dead") {
     obtenerPersonajes(request, 2).then((personajes) => {
       if (personajes) {
         personajes.forEach((personaje) => {

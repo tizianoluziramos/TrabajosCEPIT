@@ -1,6 +1,7 @@
 @import url("./CDN/bootstrap.min.css");
 @import url("./navbar.css");
 @import url("./botones.css");
+@import url("./modal.css");
 
 body {
   background: linear-gradient(

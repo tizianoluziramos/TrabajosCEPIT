@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="elerrorsito"></div>
+    <div id="elestadodelapromesa"></div>
+
+    <script>
+        function crearloserrores() {
+            try {
+                console.log(nonExistentVariable); 
+            } catch (error) {
+                document.getElementById('elerrorsito').innerHTML += `<p class="error">ReferenceError: ${error.message}</p>`;
+            }
+
+            try {
+                nullFunction();
+            } catch (error) {
+                document.getElementById('elerrorsito').innerHTML += `<p class="error">TypeError: ${error.message}</p>`;
+            }
+
+            try {
+                eval('var a = ;');
+            } catch (error) {
+                document.getElementById('elerrorsito').innerHTML += `<p class="error">Error de sintaxis: ${error.message}</p>`;
+            }
+        }
+        function hacerlarequest() {
+            let promise = new Promise((resolve, reject) => {
+                let statusCode = 200;
+                if (statusCode === 200) {
+                    resolve({ status: 200, message: 'OK' });
+                } else {
+                    reject({ status: statusCode, message: 'Error' });
+                }
+            });
+
+            promise.then(response => {
+                document.getElementById('elestadodelapromesa').innerHTML = `
+                    <p class="success">Estado de la promesa: ${response.status} ${response.message}</p>
+                `;
+            }).catch(error => {
+                document.getElementById('elestadodelapromesa').innerHTML = `
+                    <p class="error">Estado de la promesa: ${error.status} ${error.message}</p>
+                `;
+            });
+        }
+
+        crearloserrores();
+        hacerlarequest();
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+.boton {
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#siguiente {
+  background-color: #343a40;
+  color: white;
+  margin-left: 20px;
+}
+
+#previo {
+  background-color: #343a40;
+  color: white;
+  margin-right: 20px;
+}
+
+#siguiente:disabled,
+#previo:disabled {
+  background-color: #343a40;
+  color: #666;
+  cursor: not-allowed;
+}
+
+#siguiente:hover:enabled,
+#previo:hover:enabled {
+  transform: scale(1.10);
+}

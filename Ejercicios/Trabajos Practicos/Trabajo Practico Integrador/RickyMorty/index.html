@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ricky Morty API Test" />
+    <meta
+      name="keywords"
+      content="Ricky Morty, Ricky, Morty, Morty Ricky, Ricky API, Ricky Morty API, API Ricky Morty, Morty API"
+    />
+    <meta name="author" content="Tiziano Tomas Luzi Ramos" />
+    <title>Ricky Morty</title>
+    <link rel="shortcut icon" href="./items/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <button id="previo" class="boton">Previo</button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Filtrar</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" id="statusalive" href="#">Vivo</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" id="statusdead" href="#">Muerto</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" id="statusunknown" href="#"
+                    >Desconocido</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" id="clearfilter" href="#"
+                    >Desactivar filtro</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <form class="d-flex form-d-flex-search" role="search" id="searchForm">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Personaje"
+            aria-label="Search"
+            id="searchInput"
+          />
+          <button
+            class="btn btn-outline-success"
+            id="buscarpornombre"
+            type="submit"
+          >
+            Buscar
+          </button>
+        </form>
+        <button id="siguiente" class="boton">Siguiente</button>
+      </div>
+    </nav>
+    <img src="./items/rickyandmorty.webp" alt="imagen ricky morty" id="rickyandmorty"/>
+    <div id="results-container" class="results-container"></div>
+    <script src="./js/script.js" type="module"></script>
+    <script src="./js/CDN/boostrap.js"></script>
+  </body>
+</html>
